@@ -101,7 +101,7 @@ open class Logger: Equatable, Identifiable, Hashable {
     open var logMsgFormatter: LogMsgFormatter = {
         date, label, level, file, function, line, message in
         
-        print("[\(label): \(level): \(function): line \(line)] \(message())")
+        print("[\(label): \(level): \(function) line \(line)] \(message())")
     }
 
     /// A string identifying the logger.
