@@ -131,7 +131,8 @@ open class Logger: Equatable, Identifiable, Hashable {
     
     /// Logs a message. Unless the log level is determined dynamically,
     /// you should normally use
-    /// self.info, self.debug, self.warning, self.error, or self.critical
+    /// self.trace, self.debug, self.notice, self.warning,
+    /// self.error, or self.critical
     /// to log a message at a given level.
     open func log(
         level: Level,
@@ -177,6 +178,21 @@ open class Logger: Equatable, Identifiable, Hashable {
         
         self.log(
             level: .debug, message(),
+            file: file, function: function, line: line
+        )
+    }
+    
+    /// Logs a debugging message.
+    @inlinable
+    open func notice(
+        _ message: @autoclosure @escaping () -> String,
+        file: String = #file,
+        function: String = #function,
+        line: UInt = #line
+    ) {
+        
+        self.log(
+            level: .notice, message(),
             file: file, function: function, line: line
         )
     }
