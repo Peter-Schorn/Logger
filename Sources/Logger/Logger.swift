@@ -164,22 +164,6 @@ open class Logger: Equatable, Identifiable, Hashable {
         )
     }
     
-    
-    /// Logs an informational message.
-    @inlinable
-    open func info(
-        _ message: @autoclosure @escaping () -> String,
-        file: String = #file,
-        function: String = #function,
-        line: UInt = #line
-    ) {
-        
-        self.log(
-            level: .info, message(),
-            file: file, function: function, line: line
-        )
-    }
-    
     /// Logs a debugging message.
     @inlinable
     open func debug(
@@ -242,11 +226,10 @@ open class Logger: Equatable, Identifiable, Hashable {
     
     
     /// The log level of the logger.
-    public enum Level: Int, Comparable {
+    public enum Level: Int, Comparable, CaseIterable {
         
         case disabled
         case trace
-        case info
         case debug
         case warning
         case error
@@ -255,7 +238,23 @@ open class Logger: Equatable, Identifiable, Hashable {
         public static func < (lhs: Self, rhs: Self) -> Bool {
             return lhs.rawValue < rhs.rawValue
         }
-
+        
+        /**
+         All of the log levels.
+        
+         * disabled
+         * trace
+         * debug
+         * warning
+         * error
+         * critical
+         
+         */
+        public static let allCases: [Self] = [
+            .disabled, .trace, .debug, .warning, .error, .critical
+        ]
+        
+        
     }
     
 }
