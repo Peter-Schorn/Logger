@@ -7,7 +7,7 @@ public class WeakWrapper<T: AnyObject> {
     
     public weak var object: T?
     
-    init(_ object: T) {
+    public init(_ object: T) {
         self.object = object
     }
     
