@@ -1,3 +1,3 @@
 # Logger
 
-A description of this package.
+A Logging Library
