@@ -53,12 +53,14 @@ open class Logger: Equatable, Identifiable, Hashable {
     
     
     /// Enables/disables all loggers.
-    /// This variable **WILL** affect loggers created in the future.
+    /// This property **will** affect loggers created in the future.
     public static var allDisabled = false
     
     
     /// Sets the logging level for all **current** loggers.
-    /// This function will not affect loggers created in the future.
+    /// This function will **not** affect loggers created in the future.
+    /// 
+    /// - Parameter level: The log level.
     open class func setLevel(to level: Level) {
         for logger in allLoggers {
             logger.level = level
@@ -228,9 +230,9 @@ open class Logger: Equatable, Identifiable, Hashable {
     /// The log level of the logger.
     public enum Level: Int, Comparable, CaseIterable {
         
-        case disabled
         case trace
         case debug
+        case notice
         case warning
         case error
         case critical
@@ -242,16 +244,16 @@ open class Logger: Equatable, Identifiable, Hashable {
         /**
          All of the log levels.
         
-         * disabled
          * trace
          * debug
+         * notice
          * warning
          * error
          * critical
          
          */
         public static let allCases: [Self] = [
-            .disabled, .trace, .debug, .warning, .error, .critical
+            .trace, .debug, .notice, .warning, .error, .critical
         ]
         
         
