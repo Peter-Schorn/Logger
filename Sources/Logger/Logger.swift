@@ -1,8 +1,8 @@
 import Foundation
 
 /// A class for logging messages.
-open class Logger: Equatable, Identifiable, Hashable {
-
+open class Logger: Equatable, Identifiable, Hashable, TextOutputStream {
+    
     /**
      The type of the closure that determines
      how the log message is formatted.
@@ -50,7 +50,6 @@ open class Logger: Equatable, Identifiable, Hashable {
         
         return nil
     }
-    
     
     /// Enables/disables all loggers.
     /// This property **will** affect loggers created in the future.
@@ -127,6 +126,10 @@ open class Logger: Equatable, Identifiable, Hashable {
         Self._allLoggers.removeFirst { logger in
             logger.object == self
         }
+    }
+    
+    public func write(_ string: String) {
+        self.log(level: .trace, string)
     }
     
     /// Logs a message. Unless the log level is determined dynamically,
