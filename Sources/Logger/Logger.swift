@@ -185,7 +185,7 @@ open class Logger: Equatable, Identifiable, Hashable, TextOutputStream {
         )
     }
     
-    /// Logs a debugging message.
+    /// Logs a notice message.
     @inlinable
     open func notice(
         _ message: @autoclosure @escaping () -> String,
