@@ -119,6 +119,10 @@ open class Logger: Equatable, Identifiable, Hashable, TextOutputStream {
     ) {
         self.label = label
         self.level = level
+        if let logMsgFormatter = logMsgFormatter {
+            self.logMsgFormatter = logMsgFormatter
+        }
+        
         Self._allLoggers.append(WeakWrapper(self))
     }
     
