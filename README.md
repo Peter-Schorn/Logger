@@ -1,3 +1,3 @@
 # Logger
 
-A Logging Library
+A Logging Library for Swift
